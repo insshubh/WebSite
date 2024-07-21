@@ -102,3 +102,13 @@
     margin: 1.5rem 0;
   }
 }
+
+.btnn-primary.vanish-on-hover {
+  background-color: transparent; 
+  color: white; 
+}
+
+.btnn-primary.vanish-on-hover:hover {
+  background-color: transparent; 
+}
+

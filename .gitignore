@@ -1,9 +1,17 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+src\assets
 /node_modules
 /.pnp
 .pnp.js
+
+# dotenv environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # testing
 /coverage
@@ -13,11 +21,29 @@
 
 # misc
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+/.vscode
+*.swp
 
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# sensitive files
+/config.js
+/secrets.js
+
+# IDE specific files
+.idea/
+*.iml
+
+# macOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+desktop.ini
+
+# Swiper related files
+/swiper-bundle.min.css
+/swiper-bundle.min.js

@@ -5,20 +5,28 @@ import emailjs from "emailjs-com";
 
 const Contact = () => {
   const [emailIsSent, setEmailIsSent] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
       .sendForm(
-        "service_jxtv4xm",
-        "template_gnxwcoq",
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
         e.target,
-        "8y4tCAA_-K1JlPEk8"
+        process.env.REACT_APP_EMAILJS_USER_ID
       )
-      .then(() => {
-        setEmailIsSent(true);
-      });
+      .then(
+        (result) => {
+          console.log(result.text);
+          setEmailIsSent(true);
+        },
+        (error) => {
+          console.error("Failed to send email: ", error.text);
+          setErrorMessage("Failed to send the message. Please try again later.");
+        }
+      );
   };
 
   return (
@@ -29,17 +37,14 @@ const Contact = () => {
         <div className="contact__options">
           <article className="contact__option">
             <MdOutlineEmail className="contact__option-icon" />
-            <h4>LinkedIn</h4>
-            <h5>Ademir Alijagic</h5>
-            <a href="https://www.linkedin.com/in/ademiralijagic/">
-              Send a message
-            </a>
+            <h5>Shubham Kumar</h5>
+            <a href="https://www.linkedin.com/in/insshubh/"><button className="btn btn-primary">Let Connect</button></a>
+
+
           </article>
         </div>
         {emailIsSent ? (
-          <h2 id="Contact__sent-message">
-            Your Message was successfully sent!
-          </h2>
+          <h2 id="Contact__sent-message">Your Message was successfully sent!</h2>
         ) : (
           <form onSubmit={sendEmail}>
             <input
@@ -58,12 +63,12 @@ const Contact = () => {
               name="message"
               rows="7"
               placeholder="Your Message"
+              required
             ></textarea>
-            <button type="submit" className="btn btn-primary">
-              Send Message
-            </button>
+            <button type="submit" className="btn btn-primary">Send Message</button>
           </form>
         )}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     </section>
   );
