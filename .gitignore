@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-src\assets
+src/assets
 /node_modules
 /.pnp
 .pnp.js
@@ -16,8 +16,6 @@ src\assets
 # testing
 /coverage
 
-# production
-/build
 
 # misc
 .DS_Store
@@ -47,3 +45,10 @@ desktop.ini
 # Swiper related files
 /swiper-bundle.min.css
 /swiper-bundle.min.js
+
+# Ignore specific image files in src/assets
+/src/assets/Anand.jpg
+/src/assets/Rohit.png
+/src/assets/testpriyanshu.png
+/src/assets/profile.png
+/src/assets/Prohile.png
